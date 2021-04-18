@@ -6,25 +6,11 @@ App({
     logs.unshift(Date.now())
     wx.setStorageSync('logs', logs)
 
-    const appId = 'wx6ee743d570d519a2'
-    const appSecret = 'ad6d4977570b9adfab015bb35c07ac28'
+    // const appId = 'wx6ee743d570d519a2'
+    // const appSecret = 'ad6d4977570b9adfab015bb35c07ac28'
 
 
-    // 登录
-    wx.login({
-      success: res => {
-        // 发送 res.code 到后台换取 openId, sessionKey, unionId
-        wx.request({
-          url: 'https://api.weixin.qq.com/sns/jscode2session?appid='+appId+'&secret='+appSecret+'&js_code=' + res.code + '&grant_type=authorization_code',
-          success: res =>{
-            // 获取到openId
-            this.globalData.openid = res.data.openid
-            console.log("openid:",res.data.openid)
-            console.log("res:",res)
-          }
-        })
-      }
-    })
+
 
 
     // // 获取用户信息
@@ -48,13 +34,14 @@ App({
     //   }
     // })
   },
-  
+
   globalData: {
     userInfo: null,
-    allInfo:null,
-    openid:null,
-    haslogin:false,
-    hasBind:false,
-    hasUserInfo:false
+    allInfo: null,
+    openid: null,
+    haslogin: false,
+    hasBind: false,
+    hasUserInfo: false,
+    userOpenId: null,
   }
 })

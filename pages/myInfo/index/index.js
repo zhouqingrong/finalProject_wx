@@ -2,40 +2,41 @@ import Dialog from '../../../miniprogram_npm/@vant/weapp/dialog/dialog';
 var util = require('../../../utils/util.js');
 var api = require('../../../config/api.js');
 const app = getApp();
+const user = require("../../../api/user.js")
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-      // hasBind:false,
-      // haslogin:false,
-      userInfo: {},
-      hasUserInfo: false,
-      canIUse: wx.canIUse('button.open-type.getUserInfo'),//用于getUserInfo
-      canIUseGetUserProfile: false,  //获取7项用户信息，弹窗提示
-      canIUseOpenData:false  //直接获取昵称头像
-      // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需
+    // hasBind:false,
+    // haslogin:false,
+    userInfo: {},
+    hasUserInfo: false,
+    canIUse: wx.canIUse('button.open-type.getUserInfo'), //用于getUserInfo
+    canIUseGetUserProfile: false, //获取7项用户信息，弹窗提示
+    canIUseOpenData: false //直接获取昵称头像
+    // canIUseOpenData: wx.canIUse('open-data.type.userAvatarUrl') && wx.canIUse('open-data.type.userNickName'), // 如需
   },
 
 
   /**
    * 生命周期函数--监听页面加载
    */
-  onLoad: function (options) {
+  onLoad: function(options) {
     if (wx.getUserProfile) {
       this.setData({
         canIUseGetUserProfile: true
       })
     }
   },
-   /**
+  /**
    * 生命周期函数--监听页面显示
    */
-  onShow: function () {
-  this.setData({
-          userInfo: app.globalData.userInfo,
-          hasUserInfo: app.globalData.hasUserInfo
-  })
+  onShow: function() {
+    this.setData({
+      userInfo: app.globalData.userInfo,
+      hasUserInfo: app.globalData.hasUserInfo
+    })
   },
   getUserProfile(e) {
     // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
@@ -45,17 +46,17 @@ Page({
         this.setData({
           userInfo: res.userInfo,
           hasUserInfo: true,
-        // 在这里，发送openId和userInfo，插入一条数据，成功回调把haslogin设为true
-        //   haslogin:true,
+          // 在这里，发送openId和userInfo，插入一条数据，成功回调把haslogin设为true
+          //   haslogin:true,
         })
         //把变量全部转为全局
-        app.globalData.hasUserInfo=true;
+        app.globalData.hasUserInfo = true;
         app.globalData.userInfo = res.userInfo;
-        app.globalData.haslogin=true;
+        app.globalData.haslogin = true;
       }
     })
   },
-    getUserInfo(e) {
+  getUserInfo(e) {
     // 不推荐使用getUserInfo获取用户信息，预计自2021年4月13日起，getUserInfo将不再弹出弹窗，并直接返回匿名的用户个人信息
     console.log(e)
     this.setData({
@@ -63,37 +64,37 @@ Page({
       hasUserInfo: true
     })
   },
-  goBind(){
-    if(!app.globalData.haslogin){
+  goBind() {
+    if (!app.globalData.haslogin) {
       Dialog.confirm({
         message: '微信授权登录',
       }).then(() => {
         // on confirm
         this.getUserProfile()
       }).catch(() => {
-          // on cancel
+        // on cancel
       });
-    }else{
+    } else {
       wx.navigateTo({
         url: "/pages/myInfo/bind/bind"
       });
     }
   },
 
-  goPages(e){
-    if(!app.globalData.haslogin){
+  goPages(e) {
+    if (!app.globalData.haslogin) {
       Dialog.confirm({
         message: '微信授权登录',
       }).then(() => {
         // on confirm
         this.getUserProfile()
       }).catch(() => {
-          // on cancel
+        // on cancel
       });
-    }else if(!app.globalData.hasBind){
+    } else if (!app.globalData.hasBind) {
       Dialog.confirm({
-        message: '去完善信息',
-      })
+          message: '去完善信息',
+        })
         .then(() => {
           // on confirm
           wx.navigateTo({
@@ -102,22 +103,22 @@ Page({
         })
         .catch(() => {
           // on cancel
-        });   
-    }else{
-      console.log("e.currentTarget",e.currentTarget)
+        });
+    } else {
+      console.log("e.currentTarget", e.currentTarget)
       let route = e.currentTarget.dataset.route;
       wx.navigateTo({
-              url: route,
-              success: function (res) { },
-              fail: function (res) { },
-              complete: function (res) { },
-            })
+        url: route,
+        success: function(res) {},
+        fail: function(res) {},
+        complete: function(res) {},
+      })
       // wx.navigateTo({
       //   url: "/pages/myInfo/bind/bind"
       // });
     }
   }
- 
+
   // goOrderIndex(e) {
   //   if (this.data.hasLogin) {
   //     let tab = e.currentTarget.dataset.index
