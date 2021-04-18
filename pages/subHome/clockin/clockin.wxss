@@ -1,0 +1,51 @@
+/* pages/clockin/clockin.wxss */
+.Container{
+  background-color: #FFFFFF;
+  width: 100%;
+  height: calc(100vh);
+}
+.imgborderConatiner{
+  margin-top: 20rpx;
+  width: 100%;
+  height: 600rpx;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.closefather{
+  margin-top: 20rpx;
+  width: 300px;
+  height: 280px;
+  border: 1px solid black;
+  position: relative;
+}
+.imgborder{
+  width: 150px;
+  height: 150px;
+  border: dotted 1px #bebdbd;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.icon{
+  width: 50px;
+  height: 50px;
+}
+/* .image {
+  width: 250px;
+  height: 250px;
+} */
+.img{
+  /* position: relative; */
+  margin-top: 30rpx;
+}
+.closeimg{
+  position: absolute;
+  top: 3rem;
+  right: 3rem;
+}
+.confirmBtn{
+  margin: 20rpx 0;
+}
+
+

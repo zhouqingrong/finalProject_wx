@@ -1,0 +1,45 @@
+{
+  "pages":[
+    "pages/home/home",
+    "pages/test/test",
+    "pages/subHome/clockin/clockin",
+    "pages/myInfo/index/index",
+    "pages/myInfo/myClass/myClass", 
+    "pages/myInfo/bind/bind",
+    "pages/subHome/health/health",
+    "pages/subHome/area/area",
+    "pages/logs/logs"
+  ],
+  "window":{
+    "backgroundTextStyle":"dark",
+    "backgroundColor": "#FFFFFF",
+    "enablePullDownRefresh": true,
+    "navigationBarBackgroundColor": "#3AB36E",
+    "navigationBarTitleText": "健康打卡",
+    "navigationBarTextStyle":"white"
+  },
+  "tabBar": {
+    "backgroundColor": "#fafafa",
+    "borderStyle": "white",
+    "selectedColor": "#3AB36E",
+    "color": "#666",
+    "list": [
+      {
+        "pagePath": "pages/home/home",
+        "iconPath": "static/images/home.png",
+        "selectedIconPath": "static/images/home@selected.png",
+        "text": "首页"
+      },
+      {
+        "pagePath": "pages/myInfo/index/index",
+        "iconPath": "static/images/my.png",
+        "selectedIconPath": "static/images/my@selected.png",
+        "text": "我的"
+      }
+    ]
+  },
+  "usingComponents": {
+    "van-button": "@vant/weapp/button/index"
+  },
+  "sitemapLocation": "sitemap.json"
+}

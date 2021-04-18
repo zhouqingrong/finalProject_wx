@@ -1,0 +1,74 @@
+<!--pages/clockin/clockin.wxml-->
+<!-- 图片上传 -->
+<view class="Container">
+		<view class="cu-form-group">
+			<view class="imgborderConatiner"> 
+					<!-- 没上传之前 -->
+					<view class="imgborder" wx:if="{{aimgurl==''}}">
+						<view  bindtap="browse">
+						<image src='/static/images/camera.png' class="icon"></image>
+						</view>
+					</view>
+					<!-- 选择图片之后，可删除图片 -->
+					<view wx:else >
+						<van-image
+							width="21rem"
+							height="22rem"
+							fit="contain"
+							class="img"
+							src="{{aimgurl}}"
+						/>
+						<view class=" bg-darkGray closeimg" catchtap="DelImg" wx:if="{{canDel}}">
+							<text class="cuIcon-close"></text>
+						</view>
+
+					</view>
+			</view> 
+		</view>
+		<!-- 确认按钮 -->
+		<van-toast id="van-toast" />
+		<view class="confirmBtn"> 
+			<button wx:if="{{!isClockIn}}" bindtap="confirm">打卡</button>
+			<button wx:else>打卡成功</button>
+		</view>	
+</view>
+
+<!-- 可获得图片了 -->
+<!-- <image wx:if="imgurl!=''" src='{{imgurl}}' class="imageTest"></image> -->
+<!-- 图片上传结束 -->
+<!-- 上拉表 -->
+<!-- <van-action-sheet
+  show="{{ show }}"
+  actions="{{ actions }}"
+	cancel-text="取消"
+	bind:cancel="onClose"
+  bind:select="onSelect"
+/> -->
+<!-- 上拉表结束 -->
+<!-- 拍照 -->
+<!-- <view class="page-body">
+  <view class="page-body-wrapper">
+    <camera device-position="back" flash="off" binderror="error" style="width: 100%; height: 300px;"></camera>
+    <view class="btn-area">
+      <button type="primary" bindtap="takePhoto">拍照</button>
+    </view>
+    <view class="preview-tips">预览</view>
+    <image wx:if="{{src}}" mode="widthFix" src="{{src}}"></image>
+  </view>
+</view> -->
+<!-- 拍照结束 -->
+<!-- 模态框 -->
+<!-- <view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+		<view class="cu-bar option"  bindtap="hideModal">
+      <view class="action text-black">拍照上传</view>
+		</view>
+		<view class="cu-bar  option"  bindtap="hideModal">
+      <view class="action text-black">从相册中选择</view>
+		</view>
+		<view class="cu-bar  option"  bindtap="hideModal">
+      <view class="action text-black">取消</view>
+    </view>
+  </view>
+</view> -->
+<!-- 模态框结束 -->

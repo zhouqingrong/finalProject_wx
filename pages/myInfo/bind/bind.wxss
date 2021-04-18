@@ -1,0 +1,27 @@
+/* pages/myInfo/bind/bind.wxss */
+.bindInfo{
+  padding: 20rpx;
+}
+.bindInfo .wx-userinfo{
+  display: flex;
+  flex-direction: row;
+  justify-content: start;
+  align-items: center;
+}
+.bindInfo .wx-userinfo .userinfo-avatar {
+  overflow: hidden;
+  width: 128rpx;
+  height: 128rpx;
+  margin: 20rpx 30rpx 20rpx 10rpx;
+  border-radius: 50%;
+  display: inline-block;
+}
+.bindInfo .wx-userinfo .userinfo-name {
+  display: inline-block;
+}
+.bindInfo .userinfo {
+  padding-left: 20rpx;
+}
+.bgcolor{
+  background-color: #3AB36E;
+}

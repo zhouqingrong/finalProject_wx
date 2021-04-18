@@ -1,0 +1,31 @@
+<!--pages/health/health.wxml-->
+<!-- <text>健康状况</text> -->
+<view class="cu-bar bg-white">
+    <view class="action">
+      <text class="cuIcon-titles text-green"></text>
+      <text class="text-l text-bold" space="nbsp">健康情况   <text class="text-red"> 2021-03-25</text> </text>
+    </view>
+</view>
+
+  <view class="cu-form-group"><text>关于新冠肺炎，你当前的状况是？（多选）</text></view>
+	<view class="cu-form-group" wx:for="{{healthdesc}}" wx:key="index" >
+
+    <checkbox class="round green checkbox-icon"></checkbox>
+		<view class="title"><text class="text-left">{{healthdesc[index]}}</text></view>
+	</view>
+	
+<view class="cu-bar bg-white margin-top">
+    <view class="action">
+      <text class="cuIcon-titles text-green"></text>
+      <text class="text-rl text-bold">当前定位</text>
+      <image class="my-icon" src="/static/images/place.png"></image>
+    </view>
+</view>
+<view>
+  <view class="padding-xl radius shadow bg-white">当前定位</view>
+</view>
+<view class="padding flex flex-direction">
+  <button class="cu-btn lg confirm text-l">确定</button>
+</view>
+
+

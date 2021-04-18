@@ -1,0 +1,37 @@
+<!--pages/home/home.wxml-->
+<!-- 上部banner图 -->
+<view class="banner">
+  <image src="../../static/images/home-banner.png" background-size="cover"></image>
+</view>
+<van-dialog id="van-dialog" />
+<!-- 三个卡片跳转 -->
+<view class="main padding text-center">
+  <view class="padding-xl radius shadow bg-gradual-blue margin-top " bindtap="goPages" data-route="../subHome/clockin/clockin">
+    <!-- <navigator url="../subHome/clockin/clockin" hover-class="none" >我在寝室打卡</navigator> -->
+    我在寝室打卡
+    <!-- <navigator  bindtap="showModal" data-target="bottomModal" hover-class="none" >我在寝室打卡</navigator> -->
+  </view>
+  <view class="padding-xl radius shadow bg-green margin-top" bindtap="goPages" data-route="../subHome/health/health">
+    <!-- <navigator url="../subHome/health/health" hover-class="none">健康状况异常</navigator> -->
+    健康状况异常
+  </view>
+  <view class="padding-xl radius shadow bg-olive olive margin-top" bindtap="goPages" data-route="../subHome/area/area">
+    <!-- <navigator url="../subHome/area/area" hover-class="none">中高风险地区</navigator> -->
+    中高风险地区
+  </view>
+</view>
+<!-- 我在寝室打卡模态框 -->
+<view class="cu-modal bottom-modal {{modalName=='bottomModal'?'show':''}}">
+  <view class="cu-dialog">
+		<view class="cu-bar option"  bindtap="hideModal">
+      <view class="action text-black">拍照上传</view>
+		</view>
+		<view class="cu-bar  option"  bindtap="hideModal">
+      <view class="action text-black">从相册中选择</view>
+    </view>
+    <view class="cu-bar  option"  bindtap="hideModal">
+      <view class="action text-black">取消</view>
+    </view>
+  </view>
+</view>
+
