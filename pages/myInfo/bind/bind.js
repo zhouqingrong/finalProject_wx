@@ -97,6 +97,7 @@ deleteBind(){
         canChange: false
       })
     }).catch(err => {
+      Toast.fail(err.data.message)
       console.log("bind err: ", err)
     })
   },

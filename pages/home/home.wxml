@@ -9,15 +9,15 @@
 <van-toast id="van-toast" />
 <!-- 三个卡片跳转 -->
 <view class="main padding text-center">
-  <view class="padding-xl radius shadow bg-gradual-blue margin-top " bindtap="goPages" data-route="../subHome/clockin/clockin">
-    <!-- <navigator url="../subHome/clockin/clockin" hover-class="none" >我在寝室打卡</navigator> -->
+  <view class="padding-xl radius shadow bg-gradual-blue margin-top " bindtap="goPages" data-route="../subHome/records/records" wx:if="{{bindStatus == 2}}">
+    今日打卡记录
+  </view>
+  <view class="padding-xl radius shadow bg-gradual-blue margin-top " bindtap="goPages" data-route="../subHome/clockin/clockin" wx:else>
     我在寝室打卡
-    <!-- <navigator  bindtap="showModal" data-target="bottomModal" hover-class="none" >我在寝室打卡</navigator> -->
   </view>
-  <view class="padding-xl radius shadow bg-green margin-top" bindtap="goPages" data-route="../subHome/health/health">
-    <!-- <navigator url="../subHome/health/health" hover-class="none">健康状况异常</navigator> -->
+  <!-- <view class="padding-xl radius shadow bg-green margin-top" bindtap="goPages" data-route="../subHome/health/health">
     健康状况异常
-  </view>
+  </view> -->
   <view class="padding-xl radius shadow bg-olive olive margin-top" bindtap="goPages" data-route="../subHome/area/area">
     <!-- <navigator url="../subHome/area/area" hover-class="none">中高风险地区</navigator> -->
     中高风险地区

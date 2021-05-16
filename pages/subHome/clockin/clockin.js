@@ -2,18 +2,20 @@
 import Toast from '../../../miniprogram_npm/@vant/weapp/toast/toast';
 import Notify from '../../../miniprogram_npm/@vant/weapp/notify/notify';
 import {
-  addRecord,hasRecord
+  addRecord,
+  hasRecord
 } from '../../../api/record'
+const app = getApp();
 Page({
   /**
    * 页面的初始数据
    */
   data: {
-    hasRecord:false,//今日是否打卡
+    hasRecord: false, //今日是否打卡
     viewWidth: 0, //设置图片样式
     viewHeight: 0, //设置图片样式
     loading: false, //加载中
-    token:"",//用于打卡记录传参
+    token: "", //用于打卡记录传参
     students: [
       // {stuNo:'170950212',username:'周庆荣'},
       // {stuNo:'170950212',username:'周庆荣'},
@@ -110,9 +112,9 @@ Page({
       }
       records.push(record)
     }
-    data["records"]=records
-    data["token"]=this.data.token
-    console.log("添加记录的data:",data)
+    data["records"] = records
+    data["token"] = this.data.token
+    console.log("添加记录的data:", data)
     addRecord(data).then(res => {
       console.log("添加打卡记录res", res)
       Toast.success({
@@ -129,7 +131,7 @@ Page({
       });
       console.log("添加打卡记录err", err)
     })
-   
+
     // console.log("上传的aimgurl", this.data.aimgurl[0]);
     // this.upLoadImgFun(this.data.aimgurl[0]);
   },
@@ -174,8 +176,9 @@ Page({
               canDel: false
             })
           } else {
+            console.log("res message==", resJSON.message)
             Notify({
-              message: '图片有误，请重新上传',
+              message: resJSON.message,
               duration: 3000,
               onClose: () => {
                 that.initdata()
@@ -240,10 +243,21 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function () {
-    hasRecord().then(res=>{
-      
-    }).catch(err=>{
-
+    //检测今日是否打卡
+    let studentId = app.globalData.allInfo.studentId
+    if (studentId == 0) {
+      return
+    }
+    hasRecord(studentId).then(res => {
+      console.log("has record res==", res)
+      if (res.data.data.status == true) {
+        this.setData({
+          isClockIn: 2,
+          aimgurl: res.data.data.record.photoUrl
+        })
+      }
+    }).catch(err => {
+      console.log("has record err==", err)
     })
   },
 

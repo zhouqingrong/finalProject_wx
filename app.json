@@ -9,7 +9,8 @@
     "pages/subHome/clockin/clockin",
     "pages/subHome/health/health",
     "pages/subHome/area/area",
-    "pages/logs/logs"
+    "pages/logs/logs",
+    "pages/subHome/records/records"
   ],
   "window":{
     "backgroundTextStyle":"dark",

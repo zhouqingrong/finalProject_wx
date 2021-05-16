@@ -12,10 +12,14 @@ Page({
    * 页面的初始数据
    */
   data: {
-
+    bindStatus: 0,
   },
   getUserProfile(e) {
-    wxlogin(e)
+    wxlogin(e).then(res =>{
+      this.getBindStatus()
+    }).catch(err => {
+
+    })
   },
   goPages(e) {
     if (!app.globalData.haslogin) {
@@ -84,8 +88,14 @@ Page({
         })
       }
     })
+    
   },
 
+  getBindStatus() {
+    this.setData({
+      bindStatus: app.globalData.bindStatus
+    })
+  },
   /**
    * 生命周期函数--监听页面初次渲染完成
    */
@@ -97,7 +107,7 @@ Page({
    * 生命周期函数--监听页面显示
    */
   onShow: function() {
-
+    this.getBindStatus()
   },
 
   /**
