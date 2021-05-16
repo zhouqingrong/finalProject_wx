@@ -2,7 +2,7 @@
 
 .banner image {
   width: 100%;
-  height: 312rpx;
+  height: 412rpx;
 }
 .main navigator{
   display: block;

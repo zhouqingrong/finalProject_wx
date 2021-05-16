@@ -1,10 +1,11 @@
 // pages/home/home.js
 import Dialog from '../../miniprogram_npm/@vant/weapp/dialog/dialog';
-const app = getApp();
+import {wxlogin} from '../../utils/check.js'
 import {
   openId,
   login
 } from '../../api/user.js';
+const app = getApp();
 Page({
 
   /**
@@ -14,17 +15,7 @@ Page({
 
   },
   getUserProfile(e) {
-    // 推荐使用wx.getUserProfile获取用户信息，开发者每次通过该接口获取用户个人信息均需用户确认，开发者妥善保管用户快速填写的头像昵称，避免重复弹窗
-    wx.getUserProfile({
-      desc: '展示用户信息', // 声明获取用户个人信息后的用途，后续会展示在弹窗中，请谨慎填写
-      success: (res) => {
-        app.globalData.hasUserInfo = true;
-        app.globalData.userInfo = res.userInfo;
-        app.globalData.haslogin = true;
-        console.log('home.js-getUserProfile-haslogin', app.globalData.haslogin)
-      }
-
-    })
+    wxlogin(e)
   },
   goPages(e) {
     if (!app.globalData.haslogin) {
@@ -33,21 +24,27 @@ Page({
       }).then(() => {
         // on confirm
         this.getUserProfile()
+        
       }).catch(() => {
         // on cancel
       });
     } else if (!app.globalData.hasBind) {
       Dialog.confirm({
           message: '去完善信息',
+          confirmButtonText:"学生",
+          cancelButtonText:"辅导员"
         })
         .then(() => {
-          // on confirm
+          //确认--学生
           wx.navigateTo({
             url: "/pages/myInfo/bind/bind"
           });
         })
         .catch(() => {
-          // on cancel
+          // 取消--辅导员
+          wx.navigateTo({
+            url: "/pages/myInfo/admin/admin"
+          });
         });
     } else {
       console.log("e.currentTarget", e.currentTarget)
@@ -78,9 +75,10 @@ Page({
     wx.login({
       success: res => {
         console.log(res)
+        // 获取openId
         openId(res.code).then(res => {
           console.log("openid: ", res.data.data.openid)
-          app.globalData.userOpenId = res.data.data.openid
+          app.globalData.openId = res.data.data.openid
         }).catch(err => {
           console.log("err: ", err)
         })

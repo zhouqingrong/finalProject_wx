@@ -1,9 +1,12 @@
 <!--pages/home/home.wxml-->
 <!-- 上部banner图 -->
 <view class="banner">
-  <image src="../../static/images/home-banner.png" background-size="cover"></image>
+  <image src="../../static/images/home4.png" background-size="cover"></image>
 </view>
-<van-dialog id="van-dialog" />
+<van-dialog id="van-dialog" confirm-button-text="辅导员" cancel-button-text="学生"/>
+<!-- <van-dialog id="van-dialog" confirm-button-text="这里输入确认按钮的文字" cancel-button-text="这里输入取消按钮显示的文字" title="这里是标题" show-cancel-button v-model="show" v-cloak>
+</van-dialog> -->
+<van-toast id="van-toast" />
 <!-- 三个卡片跳转 -->
 <view class="main padding text-center">
   <view class="padding-xl radius shadow bg-gradual-blue margin-top " bindtap="goPages" data-route="../subHome/clockin/clockin">

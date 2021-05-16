@@ -1,5 +1,7 @@
 <!--pages/clockin/clockin.wxml-->
 <!-- 图片上传 -->
+<van-toast id="van-toast" />
+<van-notify id="van-notify" />
 <view class="Container">
 		<view class="cu-form-group">
 			<view class="imgborderConatiner"> 
@@ -11,25 +13,35 @@
 					</view>
 					<!-- 选择图片之后，可删除图片 -->
 					<view wx:else >
-						<van-image
-							width="21rem"
-							height="22rem"
-							fit="contain"
+						<image
 							class="img"
+							style="height:{{viewHeight}}px;width:{{viewWidth}}px"
+							bindload="imageLoad"
+							data-maxheight='350'
+							data-maxwidth="350"
 							src="{{aimgurl}}"
 						/>
+						<!-- <van-loading type="spinner" color="#1989fa" wx:if="" /> -->
 						<view class=" bg-darkGray closeimg" catchtap="DelImg" wx:if="{{canDel}}">
 							<text class="cuIcon-close"></text>
 						</view>
-
 					</view>
 			</view> 
 		</view>
 		<!-- 确认按钮 -->
-		<van-toast id="van-toast" />
-		<view class="confirmBtn"> 
-			<button wx:if="{{!isClockIn}}" bindtap="confirm">打卡</button>
-			<button wx:else>打卡成功</button>
+		<view class="stuList" wx:if="{{students.length!=0}}" wx:for="{{students}}" wx:key="id" >
+			<!-- <van-field value="{{ item.stuNo }}:{{item.username}}"  disabled /> -->
+			<view class="studentItem">
+				<text class="studentInfo stuNo">{{item.stuNo}}</text>
+				<text class="studentInfo">{{item.username}}</text> 
+			</view>
+			</view>
+		<view class="confirmBtn"> 	
+			<view wx:if="{{isClockIn==1}}">
+				<button   bindtap="confirm" class="cu-btn bg-green margin-tb-sm lg leftBtn">确认打卡</button>
+				<button   bindtap="initdata" class="cu-btn bg-green margin-tb-sm lg">重新上传</button>
+			</view>
+			<view  wx:if="{{isClockIn==2}}" class="successtip">今日打卡成功！</view>
 		</view>	
 </view>
 

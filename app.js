@@ -36,12 +36,13 @@ App({
   },
 
   globalData: {
-    userInfo: null,
-    allInfo: null,
-    openid: null,
-    haslogin: false,
-    hasBind: false,
-    hasUserInfo: false,
-    userOpenId: null,
+    userInfo: null,//微信头像、昵称
+    allInfo: null,//微信用户的信息
+    openId: null,
+    haslogin: false,//是否允许获取微信头像、昵称
+    hasBind: false,//是否绑定用户信息
+    hasUserInfo: false,//是否获取微信头像、昵称,同haslogin，在home里起判断作用
+    bindStatus:0,//0是未绑定，1是绑定了学生，2是绑定了老师
+   
   }
 })

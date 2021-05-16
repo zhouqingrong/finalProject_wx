@@ -34,6 +34,7 @@
       <text class='iconfont icon-shezhi'  bindtap='goPages' data-route="../bind/bind"></text>
    </view>
    <van-dialog id="van-dialog" />
+   <van-toast id="van-toast" />
    <!-- 头像部分结束 -->
    <view class='wrapper'> 
      <!-- 选项卡说明 -->
@@ -48,7 +49,7 @@
             <view class='title'>用户类型</view>
             <view class='text'>
                <text class='iconfont icon-jingyanzhi' style="color:#FF654B;margin-right:8rpx;"></text>
-            {{userInfo.userLevelDesc || "学生管理员"}}</view>
+            {{bindStatus==1?"普通学生":bindStatus==2?"教师管理员":"未绑定"}}</view>
          </view>
          <!-- 用户类型结束 -->
          <!-- 注册时间 -->
@@ -56,22 +57,22 @@
             <view class='title'>注册时间</view>
             <view class='text item-content'>
                <text class='iconfont icon-shenhezhong' style="color:#FF654B;margin-right:8rpx;"></text>
-               {{userInfo.registerDate || "2019-10-01"}}</view>
+               {{registerDate || "暂未注册"}}</view>
          </view>
       </view>
       <!-- 选项卡说明结束-->
       <!-- 我的班级 -->
-      <view class='myClass' bindtap='goPages' data-route="../myClass/myClass">
+      <!-- <view class='myClass' bindtap='goPages' data-route="../myClass/myClass">
         <view class='title acea-row row-between-wrapper'>
            <view class='jhx_f4'>我的班级</view>
            <view class='allOrder jhx_f6' hover-class='none' >
               <text class='iconfont icon-jiantou'></text>
          </view>
         </view>
-      </view>
+      </view> -->
       <!-- 我的班级 结束 -->
         <!-- 我的信息 -->
-        <view class='myClass' bindtap='goBind' data-route="../bind/bind">
+        <view class='myClass' bindtap='goPages' data-route="../bind/bind">
         <view class='title acea-row row-between-wrapper'>
            <view class='jhx_f4'>我的信息</view>
            <view class='allOrder jhx_f6' hover-class='none' >

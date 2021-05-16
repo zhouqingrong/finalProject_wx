@@ -1,0 +1,28 @@
+<!--pages/myInfo/admin/admin.wxml-->
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog"/>
+<view class="bindInfo">
+  <view class="wx-userinfo">
+    <image wx:if="{{avatar!=''}}" class="userinfo-avatar" src='{{avatar}} '></image>
+    <view class='userinfo-name'>{{nickName}}</view>
+  </view>
+  <van-cell-group class="userinfo">
+    <van-field model:value="{{ username }}" label="账号" placeholder="请输入web账号" required="{{canChange}}" clearable autosize
+      disabled="{{!canChange}}" />
+    <van-field model:value="{{ password }}" label="密码"  type="password" placeholder="请输入密码" required="{{canChange}}" clearable autosize
+      disabled="{{!canChange}}" />
+      <van-field model:value="{{ phone }}" label="绑定手机号" placeholder="请输入手机号" clearable autosize  disabled="{{!canChange}}" />
+    </van-cell-group>
+
+  <van-cell-group class="userotherinfo">
+    <van-field wx:if="{{adminName!=''}}" value="{{ adminName}}" label="姓名" disabled />
+    <van-field wx:for="{{classes}}" wx:key="id" label="管理的班级" value="{{item.className}}" disabled />
+  </van-cell-group>
+
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-green margin-tb-sm lg" bindtap="confirmBind" wx:if="{{canChange}}">绑定</button>
+    <button class="cu-btn bg-green margin-tb-sm lg" bindtap="deleteBind" wx:else>解除绑定</button>
+  </view> 
+
+  </view>
+

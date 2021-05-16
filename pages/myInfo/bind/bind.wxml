@@ -1,73 +1,32 @@
 <!--pages/myInfo/bind/bind.wxml-->
 <!-- 绑定信息 -->
 <!-- <text>pages/myInfo/bind/bind.wxml</text> -->
+<van-toast id="van-toast" />
+<van-dialog id="van-dialog"/>
 <view class="bindInfo">
-    <view class="wx-userinfo">
-      <image wx:if="{{avatar!=''}}" class="userinfo-avatar" src='{{avatar}} '></image>
-      <view class='userinfo-name'>{{nickName}}</view>
-    </view>
-    <van-cell-group class="userinfo">
-      <van-field
-        value="{{ username }}"
-        label="姓名"
-        placeholder="请输入姓名"
-        required
-        clearable
-        autosize
-      />
-      <van-field
-        value="{{ usernum }}"
-        label="学号"
-        placeholder="请输入学号"
-        required
-        clearable
-        autosize
-        border="{{ false }}"
-      />
-      <van-field
-        value="{{ phone }}"
-        label="绑定手机号"
-        placeholder="请输入手机号"
-        required
-        clearable
-        autosize
-      />
-      <van-field
-        value="{{ urgentPhone }}"
-        label="家长电话"
-        placeholder="请输入家长电话"
-        required
-        clearable
-        autosize
-        border="{{ false }}"
-      />
-    </van-cell-group>
-    <van-cell-group class="userotherinfo">
-      <van-field
-        value="{{ department }}"
-        label="学院"
-        disabled
-      />
-      <van-field
-        value="{{ marjor }}"
-        label="专业"
-        disabled
-      />
-      <van-field
-        value="{{ dormitory }}"
-        label="宿舍"
-        disabled
-      />
-      <van-field
-        value="{{ teacher }}"
-        label="辅导员"
-        disabled
-      />
-    </van-cell-group>
-    <view class="padding flex flex-direction">
-        <button class="cu-btn bg-green margin-tb-sm lg" bindtap="confirmBind">确定</button>
-    </view>
+  <view class="wx-userinfo">
+    <image wx:if="{{avatar!=''}}" class="userinfo-avatar" src='{{avatar}} '></image>
+    <view class='userinfo-name'>{{nickName}}</view>
+  </view>
+  <van-cell-group class="userinfo">
+    <van-field model:value="{{ username }}" label="姓名" placeholder="请输入姓名" required="{{canChange}}" clearable autosize
+      disabled="{{!canChange}}" />
+    <van-field model:value="{{ usernum }}" label="学号" placeholder="请输入学号" required="{{canChange}}" clearable autosize
+      disabled="{{!canChange}}" />
+    <van-field model:value="{{ phone }}" label="绑定手机号" placeholder="请输入手机号" clearable autosize />
+    <van-field model:value="{{ urgentPhone }}" label="家长电话" placeholder="请输入家长电话" clearable autosize />
+    <van-field model:value="{{ address }}" label="家庭住址" placeholder="请输入家庭住址" clearable autosize />
+  </van-cell-group>
+  <van-cell-group class="userotherinfo">
+    <van-field value="{{ department }}" label="学院" disabled />
+    <van-field value="{{ marjor }}" label="专业" disabled />
+    <van-field value="{{ dormitory }}" label="宿舍" disabled />
+  </van-cell-group>
+  <view class="padding flex flex-direction">
+    <button class="cu-btn bg-green margin-tb-sm lg" bindtap="confirmBind" wx:if="{{canChange}}">绑定</button>
+    <view  wx:else class="padding flex flex-direction">
+    <button class="cu-btn bg-green margin-tb-sm lg" bindtap="modifyBind">修改</button>
+    <button class="cu-btn bg-red margin-tb-sm lg" bindtap="deleteBind">解绑</button>
+  </view>
+  </view>
 </view>
-
-
-  

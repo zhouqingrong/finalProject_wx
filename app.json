@@ -2,10 +2,11 @@
   "pages":[
     "pages/home/home",
     "pages/test/test",
-    "pages/subHome/clockin/clockin",
     "pages/myInfo/index/index",
     "pages/myInfo/myClass/myClass", 
     "pages/myInfo/bind/bind",
+    "pages/myInfo/admin/admin",
+    "pages/subHome/clockin/clockin",
     "pages/subHome/health/health",
     "pages/subHome/area/area",
     "pages/logs/logs"
@@ -39,7 +40,13 @@
     ]
   },
   "usingComponents": {
-    "van-button": "@vant/weapp/button/index"
+    "van-button": "@vant/weapp/button/index",
+    "van-toast": "@vant/weapp/toast/index",
+    "van-loading": "@vant/weapp/loading/index",
+    "van-notify": "@vant/weapp/notify/index",
+    "van-cell-group": "@vant/weapp/cell-group/index",
+    "van-field": "@vant/weapp/field/index",
+    "van-dialog": "@vant/weapp/dialog/index"
   },
   "sitemapLocation": "sitemap.json"
 }
